@@ -4,6 +4,8 @@ Give a PS1 appearance for your Blender 2.8+ renders !
 This script is greatly inspired by Komojo's work from the following thread :
 https://blenderartists.org/t/playstation-1-jittery-texture-effect-not-for-a-game/1167818
 
+current version : V1.0
+
 ## Presentation
 #### Jittery models
 This Python script rounds all vertex coordinates as seen from camera and creates a whole duplicata of the scene with those new coordinates taken into account.

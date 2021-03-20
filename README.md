@@ -29,12 +29,12 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 * Backup your Blender file just in case.
 * In the 'Script' tab, create a new script and paste the content.
 * Some settings are necessary :
- * Write the camera name,
- * The collection containing all the objects you want to PSXify,
- * The resolution of the grid you want vertex to snap to,
- * The delays between each objects and frame computing (to prevent glitches),
- * The depth relative to PSX camera,
- * The PSX camera FOV (you have to set it manually for now).
+1. Write the camera name,
+2. The collection containing all the objects you want to PSXify,
+3. The resolution of the grid you want vertex to snap to,
+4. The delays between each objects and frame computing (to prevent glitches),
+5. The depth relative to PSX camera,
+6. The PSX camera FOV (you have to set it manually for now).
 * Launch the script.
 * Hide all the collection but the PSXCollection.
 * ?????

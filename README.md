@@ -4,14 +4,6 @@ Give a PS1 appearance for your Blender 2.8+ renders !
 This script is greatly inspired by Komojo's work from the following thread :
 https://blenderartists.org/t/playstation-1-jittery-texture-effect-not-for-a-game/1167818
 
-## Preview
-#### Aircraft model :
-![PSXify preview at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/RenderPreviews.gif)
-#### Merciless fight :
-![Mordhau fight at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/PreviewOnMordhauScene.gif)
-#### Early test with a main cube, floor and walls :
-![Test of cube in a room](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/EarlyTestCubeInRoom.gif)
-
 ## Presentation
 #### Jittery models
 This Python script rounds all vertex coordinates as seen from camera and creates a whole duplicata of the scene with those new coordinates taken into account.
@@ -23,6 +15,30 @@ PS1 is known for its texture distorsion due to lack of precision in perspective,
 The texture distorsion is obtained by twisting polygons. The solution is to render the scene from perspective to orthographic camera's point of view :
 
 ![Polygon distorsion](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/PreviewOfOrthoCameraRender.gif)
+
+## Preview
+#### Aircraft model :
+![PSXify preview at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/RenderPreviews.gif)
+#### Merciless fight :
+![Mordhau fight at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/PreviewOnMordhauScene.gif)
+#### Early test with a main cube, floor and walls :
+![Test of cube in a room](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/EarlyTestCubeInRoom.gif)
+
+## Tutorial
+* Copy the content of PSXify.py script, not need to download the repo.
+* Backup your Blender file just in case.
+* In the 'Script' tab, create a new script and paste the content.
+* Some settings are necessary :
+ * Write the camera name,
+ * The collection containing all the objects you want to PSXify,
+ * The resolution of the grid you want vertex to snap to,
+ * The delays between each objects and frame computing (to prevent glitches),
+ * The depth relative to PSX camera,
+ * The PSX camera FOV (you have to set it manually for now).
+* Launch the script.
+* Hide all the collection but the PSXCollection.
+* ?????
+* Profit !
 
 # Limitations :
 * The script was currently tested on Blender 2.91. I mentionned Blender 2.8 to talk about recent versions of Blender.

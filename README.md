@@ -26,6 +26,8 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 
 # Limitations :
 * The script was currently tested on Blender 2.91. I mentionned Blender 2.8 to talk about recent versions of Blender.
-* Walls, Floor and any long models passing behind the camera need to be subdivided at least a little.
+* Walls, Floor and any long models passing behind the camera need to be subdivided at least a little (For instance, the early test room walls and floor have been tiled).
 * Objects must be Modifier free. Mirror, Array and such interfere with number of vertex.
 * Ensure to backup your Blender file to prevent any damage.
+* Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
+* Light sources are not handled yet.

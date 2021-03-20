@@ -42,7 +42,9 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 * ?????
 * Profit !
 
-# Limitations :
+## Limitations :
+
+I noticed some issues that I'm trying to fix :
 * The script was currently tested on Blender 2.91. I mentionned Blender 2.8 to talk about recent versions of Blender.
 * Walls, Floor and any long models passing behind the camera need to be subdivided at least a little (For instance, the early test room walls and floor have been tiled).
 * Objects must be Modifier free. Mirror, Array and such interfere with number of vertex.
@@ -51,3 +53,7 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 * Light sources are not handled yet.
 * Background textures are not handled.
 * Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.
+
+## Feedback
+I would also be very happy to see if my script works well on other people's work. Contact me via Reddit or GitHub.
+This is my first hosted project on GitHub, I'll try to use this platform properly for further versions.

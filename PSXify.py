@@ -81,7 +81,6 @@ def CreateWholeFakeScene(collectionSourceName, collectionDestName, scene):
     scene.camera = PSXcamera_object
     
     # Hide original collection
-    originalCollection.hide_viewport = True
     originalCollection.hide_render = True
     
     print("exiting CreateWholeFakeScene")

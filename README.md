@@ -32,3 +32,4 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 * Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
 * Light sources are not handled yet.
 * Background textures are not handled.
+* Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.

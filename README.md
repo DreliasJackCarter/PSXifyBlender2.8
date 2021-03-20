@@ -31,3 +31,4 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 * Ensure to backup your Blender file to prevent any damage.
 * Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
 * Light sources are not handled yet.
+* Background textures are not handled.

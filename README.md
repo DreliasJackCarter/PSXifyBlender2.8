@@ -53,6 +53,7 @@ I noticed some issues that I'm trying to fix :
 * Light sources are not handled yet.
 * Background textures are not handled.
 * Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.
+* This script is made for animations only. Script execution is too slow for real time 3D.
 
 ## Feedback
 I would also be very happy to see if my script works well on other people's work. Contact me via Reddit or GitHub.

@@ -10,7 +10,7 @@ import bpy_extras.object_utils
 from time import sleep
 
 #------------------------------------------------------------------------------------------------
-cameraName = 'Camera'               #Delay between each frame, it seems to prevent some glitches
+cameraName = 'Camera'               # Camera from which meshes will be PSXified in render
 
 collectionToPSXify = 'Collection'   # Name of the Collection you want the script to apply.
 

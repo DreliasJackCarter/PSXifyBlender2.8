@@ -38,7 +38,10 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 5. The depth relative to PSX camera,
 6. The PSX camera FOV (you have to set it manually for now).
 * Launch the script.
-* Hide all the collection but the PSXCollection.
+* Hide all the collection but the PSXCollection :
+
+![What you have to thick and unthick](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/HideFromRenderAndViewport.jpg)
+
 * ?????
 * Profit !
 

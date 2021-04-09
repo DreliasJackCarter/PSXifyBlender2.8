@@ -12,19 +12,19 @@ This Python script rounds all vertex coordinates as seen from camera and creates
 #### Affine textures
 PS1 is known for its texture distorsion due to lack of precision in perspective, or as a famous French Youtuber said : "The walls that are not yet finished cooking" :
 
-![Affine texture preview](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Affine.jpg)
+![Affine texture preview](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/Affine.jpg)
 
 The texture distorsion is obtained by twisting polygons. The solution is to render the scene from perspective to orthographic camera's point of view :
 
-![Polygon distorsion](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/PreviewOfOrthoCameraRender.gif)
+![Polygon distorsion](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/PreviewOfOrthoCameraRender.gif)
 
 ## Preview
 #### Aircraft model :
-![PSXify preview at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/RenderPreviews.gif)
+![PSXify preview at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/RenderPreviews.gif)
 #### Merciless fight :
-![Mordhau fight at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/PreviewOnMordhauScene.gif)
+![Mordhau fight at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/PreviewOnMordhauScene.gif)
 #### Early test with a main cube, floor and walls :
-![Test of cube in a room](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/EarlyTestCubeInRoom.gif)
+![Test of cube in a room](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/EarlyTestCubeInRoom.gif)
 
 ## Tutorial
 * Copy the content of PSXify.py script, not need to download the repo.
@@ -38,7 +38,10 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 5. The depth relative to PSX camera,
 6. The PSX camera FOV (you have to set it manually for now).
 * Launch the script.
-* Hide all the collection but the PSXCollection.
+* Hide all the collection but the PSXCollection :
+
+![What you have to thick and unthick](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/HideFromRenderAndViewport.jpg)
+
 * ?????
 * Profit !
 

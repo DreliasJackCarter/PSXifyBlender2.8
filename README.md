@@ -4,7 +4,9 @@ Give a PS1 appearance for your Blender 2.8+ renders !
 This script is greatly inspired by Komojo's work from the following thread :
 https://blenderartists.org/t/playstation-1-jittery-texture-effect-not-for-a-game/1167818
 
-current version : V1.0
+current version : V1.1
+
+V1.1 Handles lights according to Komojo's logic. see 'Lighting' part of Readme for more info.
 
 ## Presentation
 #### Jittery models
@@ -40,10 +42,27 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 * Launch the script.
 * Hide all the collection but the PSXCollection :
 
-![What you have to thick and unthick](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/HideFromRenderAndViewport.jpg)
+![What you have to tick and untick](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/HideFromRenderAndViewport.jpg)
 
 * ?????
 * Profit !
+
+## Lighting
+
+In order to add light sources to your PSXified models, some modifications are necessary.
+
+First, add vertex colors to each mesh you want light to apply :
+
+![Add vertex colors](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/AddVertexColor.jpg)
+
+Then multiply the output of your texture by the Attribute 'Col' :
+
+![AttributeCol](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/MaterialModifications.jpg)
+
+Vertex will now be affected by light source exposure. However, only the light object orientation count. Light strength is determined by 'sun' and 'shadow' variables in the script.
+Here are previews of some different values combinations :
+
+![Preview of light strength](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/LightPreview.jpg)
 
 ## Limitations :
 
@@ -53,8 +72,7 @@ I noticed some issues that I'm trying to fix :
 * Objects must be Modifier free. Mirror, Array and such interfere with number of vertex.
 * Ensure to backup your Blender file to prevent any damage.
 * Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
-* Light sources are not handled yet.
-* Background textures are not handled.
+* Background textures and skyboxes are not handled.
 * Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.
 * This script is made for rendering. Script execution is too slow for real time 3D.
 

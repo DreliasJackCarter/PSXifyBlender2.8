@@ -1,6 +1,6 @@
-# 03/2021
+# 05/2021
 # PSXify script by Lucas Fierfort
-# V1.0
+# V1.1
 # IMPORTANT : Please make sure to make a backup of your file before launching this script, just in case.
 
 import bpy
@@ -9,7 +9,8 @@ import mathutils
 import bpy_extras.object_utils
 from time import sleep
 
-#------------------------------------------------------------------------------------------------
+#-----------------------------------MANDATORY SETTINGS----------------------------------------------
+
 cameraName = 'Camera'               # Camera from which meshes will be PSXified in render
 
 collectionToPSXify = 'Collection'   # Name of the Collection you want the script to apply.
@@ -23,11 +24,22 @@ delayBetweenObjects = 0.1           # Delay between objects calculation in the s
 
 depth = 0.2                         # Relative distance from PSX camera
 PSXcameraScale = 1.33               # PSX camera FOV, set it manually to fit the orginal camera
-#------------------------------------------------------------------------------------------------
+
+lightName = 'Sun'                   # Name of the light source you want to use
+#--------------------------------------LIGHT SETTINGS-----------------------------------------------
+useLights = True                    # True if you want to simulate lights
+
+sun = 1.0                           # Light source strength. Script takes only light source orientation.
+shadow = 0.85                       # Quantity of light on the opposite
+
+g_lightColor = mathutils.Vector([sun, sun, sun])                # Sun color (white)
+g_ambientColor = mathutils.Vector([shadow, shadow, shadow])     # Ambient color (lightness of shadows)
+#---------------------------------------------------------------------------------------------------
 
 
 scene = bpy.context.scene
 camera = scene.objects[cameraName]
+light = scene.objects[lightName]
 
 # Get concerned collection and duplicate every objects inside into a dedicated new collection
 def CreateWholeFakeScene(collectionSourceName, collectionDestName, scene):
@@ -119,6 +131,9 @@ def PSXifyCollection(camera, collection, scene):
             matrix = object.matrix_world
             rotationQuat = object.rotation_euler.to_quaternion()
             
+            colors = targetMesh.vertex_colors.get('Col')
+            lightDir = light.rotation_euler.to_quaternion() @ mathutils.Vector([0,0,1])
+            
             print("snapping",targetObject.name, "from",object.name, "coordinates...")
             for vert,targetVert in zip(mesh.vertices,targetMesh.vertices):
                 
@@ -128,6 +143,24 @@ def PSXifyCollection(camera, collection, scene):
                 targetVert.co = snappedPos
                 print('.', end='')
             print(targetObject.name, "snapped.")
+            
+            if useLights == True :
+                try :
+                    colorOffset = 0
+                    for poly in mesh.polygons:
+                        for idx in poly.vertices:
+                            
+                            normal = rotationQuat @ poly.normal
+                            totalLightColor = mathutils.Vector([1,1,1])
+                            brightness = max(lightDir.dot(normal), 0)
+                            totalLightColor = g_ambientColor + (g_lightColor * brightness)
+                    
+                            colors.data[colorOffset].color = [totalLightColor[0], totalLightColor[1], totalLightColor[2], 1]
+                            colorOffset += 1
+                    print("Fake lighting applied.")
+                except :
+                    print("Fake lighting not applied, possibly because of no vertex colors declared on object")
+            
             print("")
             
             sleep(delayBetweenObjects)

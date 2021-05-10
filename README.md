@@ -74,7 +74,7 @@ I noticed some issues that I'm trying to fix :
 * Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
 * Background textures and skyboxes are not handled.
 * Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.
-* This script is made for rendering. Script execution is too slow for real time 3D.
+* This script is made for rendering. Script execution is inappropriate for real time 3D.
 
 ## Feedback
 I would also be very happy to see if my script works well on other people's work. Contact me via Reddit or GitHub.

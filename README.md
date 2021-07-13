@@ -21,6 +21,8 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 ![Polygon distorsion](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/PreviewOfOrthoCameraRender.gif)
 
 ## Preview
+#### Helmet :
+![Medieval helmet script preview](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/PreviewHelmet.gif)
 #### Aircraft model :
 ![PSXify preview at different resolutions](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/RenderPreviews.gif)
 #### Merciless fight :

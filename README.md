@@ -4,11 +4,13 @@ Give a PS1 appearance for your Blender 2.8+ renders !
 This script is greatly inspired by Komojo's work from the following thread :
 https://blenderartists.org/t/playstation-1-jittery-texture-effect-not-for-a-game/1167818
 
-current version : V1.1
+current version : V1.2
 
+V1.2 Manages vertex groups.
 V1.1 Handles lights according to Komojo's logic. see 'Lighting' part of Readme for more info.
 
 ## Presentation
+![Combine Ordinal](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/CombineOrdinal.gif)
 #### Jittery models
 This Python script rounds all vertex coordinates as seen from camera and creates a whole duplicata of the scene with those new coordinates taken into account.
 #### Affine textures
@@ -74,8 +76,9 @@ I noticed some issues that I'm trying to fix :
 * Objects must be Modifier free. Mirror, Array and such interfere with number of vertex.
 * Ensure to backup your Blender file to prevent any damage.
 * Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
+~~* Light sources are not handled yet.~~
 * Background textures and skyboxes are not handled.
-* Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.
+~~* Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.~~
 * This script is made for rendering. Script execution is inappropriate for real time 3D.
 
 ## Feedback

@@ -1,6 +1,6 @@
-# 05/2021
+# 08/2021
 # PSXify script by Lucas Fierfort
-# V1.1
+# V1.2
 # IMPORTANT : Please make sure to make a backup of your file before launching this script, just in case.
 
 import bpy
@@ -75,6 +75,7 @@ def CreateWholeFakeScene(collectionSourceName, collectionDestName, scene):
             PSXifiedObject.scale = (1.0, 1.0, 1.0)
             PSXifiedObject.parent = None
             PSXifiedObject.constraints.clear()
+            PSXifiedObject.vertex_groups.clear()
             PSXcollection.objects.link(PSXifiedObject)
             
             print("")
@@ -126,7 +127,10 @@ def PSXifyCollection(camera, collection, scene):
             targetObject = scene.objects[object.name+'.PSXified']
             
             # Object data  
-            mesh = object.data
+            dg = bpy.context.evaluated_depsgraph_get()
+            eval_obj = object.evaluated_get(dg)
+            mesh = eval_obj.to_mesh()
+
             targetMesh = targetObject.data
             matrix = object.matrix_world
             rotationQuat = object.rotation_euler.to_quaternion()

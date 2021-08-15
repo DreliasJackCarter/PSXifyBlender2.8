@@ -6,8 +6,8 @@ https://blenderartists.org/t/playstation-1-jittery-texture-effect-not-for-a-game
 
 current version : V1.2
 
-V1.2 Manages vertex groups.
-V1.1 Handles lights according to Komojo's logic. see 'Lighting' part of Readme for more info.
+* V1.2 Manages vertex groups.
+* V1.1 Handles lights according to Komojo's logic. see 'Lighting' part of Readme for more info.
 
 ## Presentation
 ![Combine Ordinal](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/CombineOrdinal.gif)

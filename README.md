@@ -76,9 +76,9 @@ I noticed some issues that I'm trying to fix :
 * Objects must be Modifier free. Mirror, Array and such interfere with number of vertex.
 * Ensure to backup your Blender file to prevent any damage.
 * Eevee rendering is fast but randomly crashes. Cycles seems more stable but renders a bit slower.
-~~* Light sources are not handled yet.~~
+* ~~Light sources are not handled yet.~~
 * Background textures and skyboxes are not handled.
-~~* Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.~~
+* ~~Soft armatures are not handled properly (see sword trail). It may be due to persistent vertex groups.~~
 * This script is made for rendering. Script execution is inappropriate for real time 3D.
 
 ## Feedback

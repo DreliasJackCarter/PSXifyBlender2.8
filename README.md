@@ -48,8 +48,7 @@ The texture distorsion is obtained by twisting polygons. The solution is to rend
 
 ![What you have to tick and untick](https://github.com/DreliasJackCarter/PSXifyBlender2.8/blob/main/Previews/HideFromRenderAndViewport.jpg)
 
-* ?????
-* Profit !
+* You can then render your animation. Script will update each frame on its own until the end.
 
 ## Lighting
 

@@ -4,8 +4,11 @@ Give a PS1 appearance for your Blender 2.8+ renders !
 This script is greatly inspired by Komojo's work from the following thread :
 https://blenderartists.org/t/playstation-1-jittery-texture-effect-not-for-a-game/1167818
 
-current version : V1.2
+This script has also be
 
+current version : V1.3
+
+* v1.3 Updated to be compatible with newer Blender versions (4.0).
 * V1.2 Manages vertex groups.
 * V1.1 Handles lights according to Komojo's logic. see 'Lighting' part of Readme for more info.
 

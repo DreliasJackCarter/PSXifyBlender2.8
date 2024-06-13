@@ -1,7 +1,8 @@
 # 08/2021
 # PSXify script by Lucas Fierfort
-# V1.2
+# V1.3 (updated by Denperidge at 06/2024)
 # IMPORTANT : Please make sure to make a backup of your file before launching this script, just in case.
+# To view console output, please press Window > Toggle System Console to open (or subsequently close)
 
 import bpy
 import math
@@ -14,6 +15,7 @@ from time import sleep
 cameraName = 'Camera'               # Camera from which meshes will be PSXified in render
 
 collectionToPSXify = 'Collection'   # Name of the Collection you want the script to apply.
+                                    # Please note the name can *not* be "PSXCollection"
 
 PSXRenderWidth = 160                # PSX grid width resolution
 PSXRenderHeight = 120               # PSX grid height resolution
@@ -37,6 +39,17 @@ g_ambientColor = mathutils.Vector([shadow, shadow, shadow])     # Ambient color 
 #---------------------------------------------------------------------------------------------------
 
 
+# CONSTANTS
+# These are names used internally by the script. They don't need to be changed!
+PSX_COLLECTION_NAME = 'PSXCollection'
+PSX_CAMERA_NAME = "PSXCamera"
+PSX_IFIED_SUFFIX = ".PSXified"
+COLOR_ATTRIBUTE_NAME = 'Col'
+"""
+I've tried changing COLOR_ATTRIBUTE_NAME to the seeming new default (color),
+but it auto-renamed back to col. Keep as is for now.
+"""
+
 scene = bpy.context.scene
 camera = scene.objects[cameraName]
 light = scene.objects[lightName]
@@ -48,13 +61,14 @@ def CreateWholeFakeScene(collectionSourceName, collectionDestName, scene):
     try :
         bpy.context.active_object.select_set(False) # Deselect everything
         print(" Deselecting active objects.") 
-    except :
+    except Exception as e:
+        print(e)
         print(" Nothing was selected.")
     
     PSXCreateCollection(collectionDestName, scene)
     
     originalCollection = bpy.data.collections[collectionSourceName]
-    PSXcollection = bpy.data.collections[PSXcollectionName]
+    PSXcollection = bpy.data.collections[PSX_COLLECTION_NAME]
     
     objectsToPSXify = originalCollection.all_objects
     
@@ -68,7 +82,7 @@ def CreateWholeFakeScene(collectionSourceName, collectionDestName, scene):
             print(" ", objectToPSXify.name, "is a mesh. Copy into PSXCollection !")
             PSXifiedObject = objectToPSXify.copy()
             PSXifiedObject.data = objectToPSXify.data.copy()
-            PSXifiedObject.name = objectToPSXify.name + '.PSXified'
+            PSXifiedObject.name = objectToPSXify.name + PSX_IFIED_SUFFIX
             PSXifiedObject.animation_data_clear()
             PSXifiedObject.rotation_euler = (0.0, 0.0, 0.0)
             PSXifiedObject.location = (0.0, 0.0, 0.0)
@@ -84,8 +98,8 @@ def CreateWholeFakeScene(collectionSourceName, collectionDestName, scene):
             print("")
     
     # Create PSX camera
-    PSXcamera_data = bpy.data.cameras.new(name='PSXCamera')
-    PSXcamera_object = bpy.data.objects.new('PSXCamera', PSXcamera_data)
+    PSXcamera_data = bpy.data.cameras.new(name=PSX_CAMERA_NAME)
+    PSXcamera_object = bpy.data.objects.new(PSX_CAMERA_NAME, PSXcamera_data)
     PSXcamera_object.data.type = 'ORTHO'
     PSXcamera_object.data.ortho_scale = PSXcameraScale
     PSXcollection.objects.link(PSXcamera_object)
@@ -135,7 +149,7 @@ def PSXifyCollection(camera, collection, scene):
             matrix = object.matrix_world
             rotationQuat = object.rotation_euler.to_quaternion()
             
-            colors = targetMesh.vertex_colors.get('Col')
+            colors = targetMesh.color_attributes.get(COLOR_ATTRIBUTE_NAME)
             lightDir = light.rotation_euler.to_quaternion() @ mathutils.Vector([0,0,1])
             
             print("snapping",targetObject.name, "from",object.name, "coordinates...")
@@ -162,7 +176,8 @@ def PSXifyCollection(camera, collection, scene):
                             colors.data[colorOffset].color = [totalLightColor[0], totalLightColor[1], totalLightColor[2], 1]
                             colorOffset += 1
                     print("Fake lighting applied.")
-                except :
+                except Exception as e:
+                    print(e)
                     print("Fake lighting not applied, possibly because of no vertex colors declared on object")
             
             print("")
@@ -242,9 +257,8 @@ bpy.app.handlers.frame_change_post.clear()  # Warning: This might also delete ot
 bpy.app.handlers.frame_change_post.append(updateHandler)
 
 # Update now
-PSXcollectionName = 'PSXCollection'
-CreateWholeFakeScene(collectionToPSXify, PSXcollectionName, scene)
-if PSXcollectionName in bpy.data.collections :
+CreateWholeFakeScene(collectionToPSXify, PSX_COLLECTION_NAME, scene)
+if PSX_COLLECTION_NAME in bpy.data.collections :
     PSXcollection = bpy.data.collections[collectionToPSXify]
     print("entering PSXify")
     PSXifyCollection(camera, PSXcollection, scene)
